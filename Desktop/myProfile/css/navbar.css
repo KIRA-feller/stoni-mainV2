@@ -1,0 +1,62 @@
+/* NAVBAR BASE */
+.nav-link {
+  font-weight: 500;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* LIGHT MODE HOVER COLORS */
+
+[data-bs-theme="light"] .link-tech:hover {
+  color: #22c55e !important; /* hijau */
+  text-shadow: 0 0 6px rgba(34,197,94,0.6);
+}
+
+[data-bs-theme="light"] .link-exp:hover {
+  color: #a855f7 !important; /* ungu */
+  text-shadow: 0 0 6px rgba(168,85,247,0.6);
+}
+
+[data-bs-theme="light"] .link-project:hover {
+  color: #3b82f6 !important; /* biru */
+  text-shadow: 0 0 6px rgba(59,130,246,0.6);
+}
+
+
+/* DARK MODE HOVER COLORS */
+[data-bs-theme="dark"] .link-tech:hover {
+  color: #22c55e !important;
+  text-shadow: 0 0 8px rgba(34,197,94,0.8);
+}
+
+[data-bs-theme="dark"] .link-exp:hover {
+  color: #a855f7 !important;
+  text-shadow: 0 0 8px rgba(168,85,247,0.8);
+}
+
+[data-bs-theme="dark"] .link-project:hover {
+  color: #3b82f6 !important;
+  text-shadow: 0 0 8px rgba(59,130,246,0.8);
+}
+
+#themeToggle { 
+    border: none !important; 
+    background: transparent !important; 
+    font-size: 1.1rem; cursor: pointer; 
+}
+
+/* garis navbar  */
+/* HILANGKAN GARIS NAVBAR (BOOTSTRAP) */
+.navbar {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* JIKA MASIH ADA (KASUS border-bottom) */
+.navbar.border-bottom {
+  border-bottom: none !important;
+}
+
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

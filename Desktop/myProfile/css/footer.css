@@ -1,0 +1,89 @@
+/* ===== Variabel Warna ===== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #0f172a;
+  --subtext-color: #475569;
+  --link-color: #0f172a;
+  --link-hover-color: #0ea5e9;
+  --footer-border: #e2e8f0;
+  --footer-text: #64748b;
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0f172a;
+    --text-color: #ffffff;
+    --subtext-color: #cbd5e1;
+    --link-color: #ffffff;
+    --link-hover-color: #0ea5e9;
+    --footer-border: #1e293b;
+    --footer-text: #94a3b8;
+  }
+}
+
+/* ===== Styling ===== */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.contact-section {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.contact-section p {
+  color: var(--subtext-color);
+  margin-bottom: 30px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--link-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+}
+
+.contact-links a:hover {
+  color: var(--link-hover-color);
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 10px;
+  border-top: 1px solid var(--footer-border);
+  color: var(--footer-text);
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--link-color);
+  margin: 0 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: var(--link-hover-color);
+}

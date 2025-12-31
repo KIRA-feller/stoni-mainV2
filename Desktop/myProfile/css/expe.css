@@ -1,0 +1,76 @@
+/* SECTION */
+.experience-section {
+  margin: 6rem 0;
+}
+
+/* TITLE */
+.experience-title {
+  font-size: 2rem;
+  font-weight: 650;
+  margin-bottom: 2.5rem;
+  text-align: left; /* sama seperti Tech Stack */
+}
+
+.experience-card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.experience-card {
+  display: flex;
+  gap: 2rem;
+  padding: 2.5rem;
+
+  max-width: 900px;
+  width: 100%;
+
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.experience-header a{
+    text-decoration: none;
+    color: rgb(0, 204, 255);
+}
+
+.experience-list {
+  margin: 1.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.experience-tags {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+[data-bs-theme="dark"] .experience-card {
+  background-color: #0d1117;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+@media (max-width: 768px) {
+  .experience-card {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .experience-title {
+    text-align: center;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
