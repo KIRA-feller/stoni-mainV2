@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logoBulat.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stoni Studio Store</title>
+    <style>
+      /* Reset default margin dan padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background: #000000;
+        overflow-x: hidden;
+      }
+      
+      /* Style untuk favicon dan logo */
+      .rounded-logo {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 32px;
+        height: 32px;
+        border: 2px solid #dc2626;
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+      }
+      
+      /* Style untuk halaman loading */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      
+      /* Logo container */
+      .logo-container {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #dc2626;
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.7);
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+      
+      /* Logo image */
+      .logo-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      /* Loading text */
+      .loading-text {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        font-family: Arial, sans-serif;
+      }
+      
+      /* Loading bar container */
+      .loading-bar-container {
+        width: 200px;
+        height: 4px;
+        background: #333333;
+        border-radius: 2px;
+        margin-top: 10px;
+        overflow: hidden;
+      }
+      
+      /* Loading bar animation */
+      .loading-bar {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #dc2626, #991b1b);
+        animation: loading 1.5s ease-in-out infinite;
+      }
+      
+      /* Fallback container */
+      .fallback-logo {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+      }
+      
+      /* Animasi CSS */
+      @keyframes pulse {
+        0%, 100% { 
+          transform: scale(1); 
+          box-shadow: 0 0 20px rgba(220, 38, 38, 0.7); 
+        }
+        50% { 
+          transform: scale(1.05); 
+          box-shadow: 0 0 30px rgba(220, 38, 38, 0.9); 
+        }
+      }
+      
+      @keyframes loading {
+        0% { 
+          transform: translateX(-100%); 
+        }
+        100% { 
+          transform: translateX(100%); 
+        }
+      }
+      
+      /* Root container */
+      #root {
+        min-height: 100vh;
+        background-color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading screen dengan logo bulat -->
+    <div id="loading-screen">
+      <!-- Logo bulat di tengah -->
+      <div class="logo-container">
+        <img 
+          src="./public/assets/StoniLogo.webp" 
+          alt="Stoni Logo" 
+          class="logo-image"
+          id="logo-img"
+        />
+      </div>
+      
+      <!-- Loading text -->
+      <p class="loading-text">STONI STUDIO</p>
+      
+      <!-- Loading bar -->
+      <div class="loading-bar-container">
+        <div class="loading-bar"></div>
+      </div>
+    </div>
+
+    <!-- Root untuk React app -->
+    <div id="root"></div>
+    
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // Fungsi untuk menangani error pada gambar logo
+      function handleLogoError() {
+        const logoContainer = document.querySelector('.logo-container');
+        if (logoContainer) {
+          logoContainer.innerHTML = '<div class="fallback-logo">S</div>';
+        }
+      }
+      
+      // Set event listener untuk gambar logo
+      document.addEventListener('DOMContentLoaded', function() {
+        const logoImg = document.getElementById('logo-img');
+        if (logoImg) {
+          logoImg.onerror = handleLogoError;
+        }
+        
+        // Cek jika gambar gagal load (misalnya setelah beberapa detik)
+        setTimeout(() => {
+          if (logoImg && !logoImg.complete) {
+            handleLogoError();
+          }
+        }, 2000);
+      });
+      
+      // Hilangkan loading screen saat React siap
+      document.addEventListener('DOMContentLoaded', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        
+        // Tunggu React app siap (bisa disesuaikan)
+        setTimeout(() => {
+          if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 1000);
+      });
+      
+      // Fallback jika ada error dalam proses loading
+      window.addEventListener('error', function(e) {
+        console.error('Error occurred:', e.error);
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          // Jika ada error, tetap sembunyikan loading screen setelah 3 detik
+          setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
